@@ -1,0 +1,26 @@
+{
+  "name": "@d3x0r/srg",
+  "version": "1.0.0",
+  "description": "Salty Random Genertor is a PRNG that uses user supplied strings and typed arrays to generate randomness.",
+  "main": "salty_random_generator.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d3x0r/srg.git"
+  },
+  "keywords": [
+    "PRNG",
+    "zero-dependancy"
+  ],
+  "author": "d3x0r & K12 Kekkak Team (by use)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/d3x0r/srg/issues"
+  },
+  "homepage": "https://github.com/d3x0r/srg#readme"
+}
