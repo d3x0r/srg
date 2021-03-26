@@ -1,0 +1,2 @@
+# srg
+Salty Random Generator
