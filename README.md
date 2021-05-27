@@ -34,3 +34,48 @@ RNG.compute() // function that takes salt and generates some bits
 RNG.saltbuf = [] // the array that is used to communicate salt when more random bits are required.
 
 
+
+## RNG Methods
+
+|method|return|args|description|
+|---|---|---|---|
+|Shuffler| ? | ? | A simple array shuffler |
+| id | 44 character ID | (optional input) | returns a random hash ID.  If an input is passed, returns the hash of the input |
+| Id | 12 character ID | () | returns a short random hash ID |
+| u16_id | random characters | () | Get wide characters encoded into a buffer | 
+| sign | signature of block | ( data block to sign ) | compute a unique signature and nonce for a block of data |
+| verify | bool | (message, signature) | verifies the signature is for the block of data |
+| xor | | | |
+| dexor | | | |
+|  u8xor | | | |
+| u16xor | | | |
+| xkey | | | |
+| ukey | | | |
+
+
+
+
+```
+Salty: [Function: SaltyRNG] {
+  Shuffler: [Function: Shuffler],
+  id: [Function (anonymous)],
+  Id: [Function (anonymous)],
+  u16_id: [Function (anonymous)],
+  sign: [Function (anonymous)],
+  verify: [Function (anonymous)],
+  xor: [Function: xor],
+  dexor: [Function: dexor],
+  u16xor: [Function: txor],
+  xkey: [Function: makeXKey],
+  ukey: [Function: makeU16Key]
+}
+ALL: [Module: null prototype] {
+  GetCurrentTick: [Function: GetCurrentTick],
+  SRG_XSWS_decryptData: [Function: SRG_XSWS_decryptData],
+  SRG_XSWS_decryptString: [Function: SRG_XSWS_decryptString],
+  SRG_XSWS_encryptData: [Function: SRG_XSWS_encryptData],
+  SRG_XSWS_encryptString: [Function: SRG_XSWS_encryptString],
+  SaltyRNG: [Function: SaltyRNG] {
+  TickToTime: [Function: TickToTime],
+}
+```
