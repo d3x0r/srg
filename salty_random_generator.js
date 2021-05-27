@@ -1274,8 +1274,7 @@ function base64ArrayBuffer(arrayBuffer) {
 }
 
 
-function DecodeBase64Into( out, buf )
-{
+function DecodeBase64Into( out, buf ) {
 	var outsize = 0;
 	// if the buffer is truncated in length, use that as the 
 	// constraint, and if 1 char results with 6 bits, do not
@@ -1433,7 +1432,7 @@ SaltyRNG.u8xor = u8xor;
 
 Object.freeze( SaltyRNG );
 
-
+if(0)
 if( "undefined" == typeof module || !module.parent ) {
 	if( "undefined" == typeof mgodule || !module.parent ) {
 		var keybuf = new Uint8Array(1);
