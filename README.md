@@ -1,6 +1,8 @@
 
 # Salty Random Generator
 
+Yes, this document needs work.
+
    Takes some salt (some bits of either known or entropic valus) and generates a stream of bits from it.  
 When the stream runs out of bits, the salt callback is invoked for more entropy and more bits are computed.
 This can be used for procedural noise generation, because seed values can be specified and will re-generate the same stream of bits.
@@ -79,3 +81,11 @@ ALL: [Module: null prototype] {
   TickToTime: [Function: TickToTime],
 }
 ```
+
+
+# Changelog
+
+- 1.0.1 
+   - Release with a module version, 'export {X}' instead of 'exports.X='
+- 1.0.0 
+   - Initial version
