@@ -1,1 +1,2 @@
 const Buffer = {};
+const FS={};
