@@ -106,8 +106,10 @@ ALL: [Module: null prototype] {
 
 
 # Changelog
+- 1.2.2
+   - Fixed regression building K12.
 - 1.2.1
-   - 
+   - Merge utility work
 - 1.2.0
    - Release as module version.  (1.2.x family)
 - 1.0.1 (unrelesed?)
