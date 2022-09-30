@@ -625,9 +625,9 @@ function KangarooTwelve() {
 			var byteLength;
 			if( buf instanceof Array ) {
 				buf = buf.join();
-				byteLength = k12.lengthBytesUTF8( buf );
+				byteLength = k12.lengthBytesUTF8( buf )+1;
 			} else if( "string" === typeof buf ) {
-				byteLength = k12.lengthBytesUTF8( buf );
+				byteLength = k12.lengthBytesUTF8( buf )+1;
 			} else if( buf instanceof Uint32Array ) {
 				byteLength = buf.length * 4;
 			} else if( buf instanceof Uint8Array ) {

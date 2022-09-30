@@ -106,6 +106,8 @@ ALL: [Module: null prototype] {
 
 
 # Changelog
+- 1.2.3
+   - fix off-by-one error in string length used for K12.
 - 1.2.2
    - Fixed regression building K12.
 - 1.2.1
