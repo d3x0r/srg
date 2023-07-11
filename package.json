@@ -1,6 +1,6 @@
 {
   "name": "@d3x0r/srg",
-  "version": "1.0.0",
+  "version": "0.0.1,
   "description": "Salty Random Genertor is a PRNG that uses user supplied strings and typed arrays to generate randomness.",
   "main": "salty_random_generator.js",
   "directories": {
