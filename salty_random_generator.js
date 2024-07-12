@@ -201,7 +201,6 @@ export function SaltyRNG(f, opt) {
 			if( k12buf ) {
 				k12buf.init();
 			}
-			console
 		},
 		getByte() {
 			if( this.used & 0x7 ) {
@@ -655,8 +654,7 @@ function KangarooTwelve() {
 				for( var b = 0; b < buf.length; b++ )
 					keydata[b] = buf[b];
 			}
-
-			s = k12._KangarooTwelve_Update( data.k, data.keybuf, byteLength );
+			s = k12._KangarooTwelve_Update( data.k, data.keybuf, byteLength-1 );
 			//console.log( "Update S?", s );
 		},
 		final() {
