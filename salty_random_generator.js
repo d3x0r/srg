@@ -50,6 +50,7 @@ const decodings = { '~':0
 };
 const u8xor_code_encodings2 = new Uint8Array( 64* 128 );
 let u8 = '';
+const K12_SQUEEZE_LENGTH = 32768;
 
 for( var x = 0; x < 256; x++ ) {
 	if( x < 64 ) {
@@ -121,7 +122,6 @@ if(ENVIRONMENT_IS_NODE||ENVIRONMENT_IS_SHELL){var data=Module["readBinary"](memo
 export function SaltyRNG(f, opt) {
 
 	const readBufs = [];
-	const K12_SQUEEZE_LENGTH = 32768;
 
 	const shabuf = opt?( opt.mode === 0 )?new SHA256() : null
                           : new SHA256();
@@ -149,7 +149,7 @@ export function SaltyRNG(f, opt) {
 		} else if( k12buf ) {	
 			k12buf.update(buf);		
 			k12buf.final();
-			return k12buf.squeeze( 64 );
+			return k12buf.squeeze( K12_SQUEEZE_LENGTH );
 		} else  {
 			console.log( "no engine for salty generator" );
 		}
@@ -332,7 +332,8 @@ export function SaltyRNG(f, opt) {
 				RNG.used = 0;
 			}
 			if( k12buf.squeezing() ) {
-				RNG.entropy = k12buf.squeeze(64); // customization is a final pad string.
+				RNG.entropy = k12buf.squeeze(K12_SQUEEZE_LENGTH); // customization is a final pad string.
+				//console.log( "Squeeze for:", K12_SQUEEZE_LENGTH, RNG.entropy );
 			}
 		}
 		if( shabuf ) {
@@ -355,6 +356,7 @@ export function SaltyRNG(f, opt) {
 			}
 		}
 		RNG.available = RNG.entropy.length * 8;
+		console.log( "Avail:", RNG.available );
 		RNG.used = 0;
 	};
 	RNG.reset();
@@ -690,10 +692,10 @@ function KangarooTwelve() {
 	};
 	
 	data.k = k12._NewKangarooTwelve();
-	data.outbuf = k12._malloc( 64 );
+	data.outbuf = k12._malloc( K12_SQUEEZE_LENGTH/8 );
 	//console.log( "malloc:", data.outbuf );
 	//data.realBuf = k12.HEAPU8.slice( data.outbuf, data.outbuf+64 );
-	data.realBuf = new Uint8Array( k12.HEAPU8.buffer, data.outbuf, 64 );
+	data.realBuf = new Uint8Array( k12.HEAPU8.buffer, data.outbuf, K12_SQUEEZE_LENGTH/8 );
 	K12.absorbing = k12._KangarooTwelve_IsAbsorbing.bind(k12,data.k),
 	K12.squeezing = k12._KangarooTwelve_IsSqueezing.bind(k12,data.k),
 
@@ -1206,7 +1208,7 @@ SaltyRNG.verify = function( msg, id  ) {
 }
 
 
-function base64ArrayBuffer(arrayBuffer) {
+export function base64ArrayBuffer(arrayBuffer) {
   var base64    = ''
 
   var bytes         = new Uint8Array(arrayBuffer)
